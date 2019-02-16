@@ -1,0 +1,236 @@
+---
+title: "SRT411Assignment Joo Young Kim"
+author: "Joo Young Kim"
+date: "February 15, 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## SRT 411 Assignment 0: Intro to R and GIthub
+## Joo Young Kim 
+
+The document, "A (very) short introduction to R", "Todo" sections will be accomplished. The 14 different "Todo" sections will be done with the R programming language. By writing the code of each Todo, it will be demonstrated. Also, there is a final "Todo" provided by the professor to be completed. Thus, the total of 15 "Todo" will be demonstrated with the R programming language. These "Todo" are going to be in Rmarkdown to knitr as pdf file to be completed and submitted. 
+
+##To Do 1
+Compute the difference between 2014 and the year you started at this university and divide this by the difference between 2014 and the year you were born. Multiply this with 100 to get the percentage of your life you have spent at this university. Use brackets if you need them.
+The year I started the university: 2016
+The year I was born: 1993
+```{r}
+((2016-2014)/(2014-1993))*100
+```
+##To Do 2
+Repeat the previous ToDo, but with several steps in between. You can give the variables ay name you want, but the name has to start with a letter.
+
+The previous ToDO code is going to be used. However, this time, the variable will be created. The variable that will be created will be named, "variable1"
+```{r}
+variable1=((2016-2014)/(2014-1993))*100
+variable1
+```
+The answer of this is, as same as the previous result. However, the variable1 is created. Whenever the output of the calculation done needs to be displayed, now, variable1 can be generated in R programming to display the output of the previous To Do. 
+
+##To Do 3
+Compute the sum of 4,5,8 and 11 by first combining them into a vector and then using the function sum
+
+A vector is created by creating variable "a" and within the variable "a", the vector of sum of 4,5,8 and 11 are created.
+```{r}
+a=c(4,5,8,11)
+```
+The sum of 4,5,8 and 11 has been created by combining them into a vector
+
+```{r}
+sum(x=a)
+```
+Then by using the function sum, the output has been computed. 
+
+##To Do 4
+Plot 100 normal random numbers
+
+First, by using the rnorm() function, 100 normal randowm numbers are generated. 
+```{r}
+x = rnorm(100)
+```
+Then, to plot the generated random numbers, the plot() function is used
+
+```{r}
+plot(x)
+```
+
+##To Do 5
+Find help for the sqrt function.
+
+TO find the help for the sqrt function, the help function is computed to find out the sqrt function.
+
+```{r}
+help("sqrt")
+```
+
+##To Do 6
+Make a file called firstscript.R containing R-code that generates 100 random numbers and plots them, and run this script several times.
+
+The Script is called firstscript.R has been created with the R-code that generates 100 random bumbers and ploted them.
+The script, firstscript.R, has codes: 
+x = rnorm(100)
+plot(x)
+
+The script is saved in the working directory as working space to generate the script.
+
+To call out the firstscript.R and generate its codes.
+
+```{r}
+source("firstscript.R")
+```
+
+##To Do 7
+Put the numbers 31 to 60 in a vector named P and in a matrix with 6 rows and 5 columns named Q. Tip: use the function seq. Loot at the different ways scalars, vectors and matrices are denoted in the workspace windows.
+
+```{r}
+P= seq(from=31, to=60, by=3)
+```
+A vector named P is created that put the numbers 31 to 60 in a vector
+
+```{r}
+Q=matrix(data=c(P), ncol=5, nrow=6)
+```
+Matrix named Q with 6 rows and 5 columns are created and also a vector named P is generated as matrix. 
+
+##To Do 8
+Make a script file which constructs three random normal vectors of length 100. Call these vectors x1, x2, and x3. Make a data frame called t with three columns (called a, b, and c) containing respectively x1, x1+x2 and x1+x2+x3. Call the following functions for this data frame: plot(t) and sd(t). Can you understand the results? Rerun this script a few times.
+
+```{r}
+x1=rnorm(100)
+```
+The vector x1 has been created
+```{r}
+x2=rnorm(100)
+```
+The vector x2 has been created
+```{r}
+x3=rnorm(100)
+```
+The vector x3 has been created
+
+Vectors x1, x2, and x3 are created with the random normal vectors of length 100. 
+```{r}
+x1
+x2
+x3
+```
+The above codes generated each of these vectors output
+```{r}
+t = data.frame(a = c(x1), b = c(x1+x2), c = c(x1+x2+x3))
+```
+The above code indicates the data frame called t with threee columns containing respectively x1, x1+x2, and x1+x2+x3. 
+```{r}
+plot(t)
+```
+The data frame called t is plotted. It has three columns called a, b, and c that contrains respectively x1, x1+x2, x1+x2+x3.
+
+##To Do 9
+Add these lines to the script file of the previous section. Try to find out, either by experimenting or by using the help, what the meaning is of rgb, the last argument of rgb, lwd, pch, cex.
+
+These lines are added with the data frame called t included in the previous To Do.
+```{r}
+plot(t$a, type="l", ylim=range(t),
+     lwd=3, col=rgb(1,0,0,0,3))
+lines(t$b, type="s", lwd=2,
+      col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4,
+       col=rgb(0,0.1,0.3))
+```
+The "rgb"" indicates would be the colour of the lines, plots, and points. It is used to color specification such as red, green, blue, alpha. 
+
+The "lwd" can be used to change line width
+
+The "pch" indicates to plot with closed circles. It stands for "plot character"
+
+The "cex" is number indicating the amount by which plotting text and symbols should be scaled relative to the default. 1=default, 1.5 is 50% larger, 0.5 is 50% smaller,etc.
+
+##To Do 10
+Make a file called tst1.txt in Notepad from the example in Figure 4 and store it in your working directory. Write a script to read it, to multiply the column called g by 5 and to store it as tst2.txt
+```{r}
+d = data.frame(a = c(1,2,4,8,16,32), g = c(2,4,8,16,32,64), x = c(3,6,12,24,48,96))
+write.table(d, file="tst1.txt", row.names=FALSE)
+d2 = read.table(file="tst1.txt", header=TRUE)
+d2
+d2$g <- d2$g *5
+write.table(d2, file="tst2.txt", row.names=FALSE)
+d3 = read.table(file="tst2.txt", header=TRUE)
+d3
+```
+The example in FIgure 4 is used to store it in the working directory as file called tst1.txt. Then, to read it and to multiply the column called g by 5 and to store it as tst2.txt has been created. 
+
+##To Do 11
+COmpute the mean of the square root of a vector of 100 random numbers. What happens?
+
+```{r}
+TheSquareRoot = rnorm(100)
+```
+TheSquareRoot, variable, is created to generate a vector of 100 random numbers for next step, which is to copute the mean of the square root of a vector of 100 random numbers
+
+```{r}
+mean(sqrt(TheSquareRoot))
+```
+By running the mean of the square root of a vector of 100 random numbers, there was warning messages that NaNs has been produced. 
+
+Before generating the mean, only the sqrt(TheSquareRoot) has generated to see why.
+```{r}
+sqrt(TheSquareRoot)
+```
+It shows that there are square root values generated. However, there are NaNs which are not defined or calculated, this is why generating the mean of this could not be proceed. 
+
+
+##To Do 12
+Make a graph with on the x-axis: today, SInterklaas 2014 and your next birthday and on the y-axis the number of presents you expect on each of these days. Tip: Make two vectors first.
+
+```{r}
+datevec=strptime( c("20140215000000", "20151025000000","20161025000000","20171025000000","20181025000000","20191025000000"), format="%Y%m%d%H%M%S")
+datevec
+```
+The datevec has been created
+
+```{r}
+present=c(10,20,30,40,50,60)
+present
+```
+The vector of presents expected is created with present variable.
+```{r}
+plot(datevec,present)
+```
+From creating two vectors, now the two vectors are to be plotted with x-axis of datevec and y-axis of present to represent how many presents did I got from 2014 February 15 to 2019 October 25.
+
+##To Do 13
+Make a vector from 1 to 100. Make a for-loop wich runs through the whole vector. Multiply the elements which are smaller than 5 and larger than 90 with 10 and the other elemeents with 0.1
+
+```{r}
+Todo13 = seq(from=1, to=100)
+variable_todo13= c()
+for(i in 2:100)
+  {variable_todo13[i] = Todo13[i] * 5
+}
+```
+The vector from 1 to 100 is created with the variable, "Todo13".
+Then variable_todo13, variable has been created to maek a for-loop which runs through the whole vector, multiply the elements which are samller than 5 and larger than 90 with 10 and the other elements with 0.1
+
+```{r}
+variable_todo13
+```
+The output of this "ToDo" is above output
+##To Do 14
+Write a function for the preivous ToDo, so that you can feed it any vector you like (as argumnet). Use a for-loop in the function to do the computation with each element. Use the standard R function length in the specification of the counter.
+
+```{r}
+function1 <- function(){
+  Todo13 = seq(from=1,to=100)
+  print(Todo13)
+}
+```
+The fucntion could be created with only simple computation. The function has not been created according to the To Do instruction.
+
+##The Final ToDo
+The final Todo in the document has a footnote. Write code that will prove that footnote true.
+
+A footnote [^1]
+[^1]:footnote has been created to prove that footnote is True
